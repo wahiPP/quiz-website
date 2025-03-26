@@ -7,20 +7,24 @@ app.use(express.json());
 app.use(express.static("public"));
 
 const db = mysql.createConnection({
-    host: process.env.DB_HOST || "sql301.epizy.com", // Replace with your actual host
-    user: process.env.DB_USER || "ifo_38606937_quiz_user",
+    host: process.env.DB_HOST || "sql109.infinityfree.com",
+    user: process.env.DB_USER || "if0_38606937",
     password: process.env.DB_PASSWORD || "ZEdU4fUIfjsh",
-    database: process.env.DB_NAME || "ifo_38606937_quiz"
+    database: process.env.DB_NAME || "if0_38606937_quiz",
+    port: process.env.DB_PORT || 3306
 });
 
 db.connect((err) => {
-    if (err) console.error("Database connection error:", err);
+    if (err) {
+        console.error("Database connection error:", err);
+        return; // Don't crash the server
+    }
     console.log("Connected to MySQL database");
-});
 
-db.query("CREATE TABLE IF NOT EXISTS scores (id INT AUTO_INCREMENT PRIMARY KEY, username VARCHAR(255), score INT, timestamp VARCHAR(255))", (err) => {
-    if (err) console.error("Table creation error:", err);
-    else console.log("Scores table ready");
+    db.query("CREATE TABLE IF NOT EXISTS scores (id INT AUTO_INCREMENT PRIMARY KEY, username VARCHAR(255), score INT, timestamp VARCHAR(255))", (err) => {
+        if (err) console.error("Table creation error:", err);
+        else console.log("Scores table ready");
+    });
 });
 
 app.post("/save-score", (req, res) => {
