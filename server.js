@@ -8,9 +8,9 @@ app.use(express.static("public"));
 
 const db = mysql.createConnection({
     host: process.env.DB_HOST || "db4free.net",
-    user: process.env.DB_USER || "quizuser", // Replace with your db4free.net username
-    password: process.env.DB_PASSWORD || "QuizPass123!", // Replace with your db4free.net password
-    database: process.env.DB_NAME || "quiz_db", // Replace with your db4free.net database name
+    user: process.env.DB_USER || "quizusernew",
+    password: process.env.DB_PASSWORD || "QuizPass1234!",
+    database: process.env.DB_NAME || "quizdatabase",
     port: process.env.DB_PORT || 3306
 });
 
