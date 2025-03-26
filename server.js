@@ -7,10 +7,10 @@ app.use(express.json());
 app.use(express.static("public"));
 
 const db = mysql.createConnection({
-    host: process.env.DB_HOST || "sql109.infinityfree.com",
-    user: process.env.DB_USER || "if0_38606937",
-    password: process.env.DB_PASSWORD || "ZEdU4fUIfjsh",
-    database: process.env.DB_NAME || "if0_38606937_quiz",
+    host: process.env.DB_HOST || "db4free.net",
+    user: process.env.DB_USER || "quizuser", // Replace with your db4free.net username
+    password: process.env.DB_PASSWORD || "QuizPass123!", // Replace with your db4free.net password
+    database: process.env.DB_NAME || "quiz_db", // Replace with your db4free.net database name
     port: process.env.DB_PORT || 3306
 });
 
